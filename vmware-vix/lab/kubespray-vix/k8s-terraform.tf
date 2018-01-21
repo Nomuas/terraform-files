@@ -15,15 +15,15 @@ resource "vix_vm" "master" {
     description = "Terraform VMWare Vix k8s ${format("${var.labname}-master-%02d", count.index+1)}"
 
     image {
-		url = "file:///Users/fred/Downloads/CentOS-7-x86_64-Vagrant-1711_01.VMwareFusion.box"
-		checksum = "1c92b17c927b39ee3c02acac142ec0bec1c81a372d187bd058f2ecd5a55530ae"
+		url = "file:///Users/fred/git/packer-centos-7/builds/vmware-centos7.box"
+		checksum = "c53b821d00db0b06637a538b87367f6d95f1f22879ec32f271888da8489030f4"
         checksum_type = "sha256"
     }
 
     cpus = 2
     # Memory sizes must be provided using IEC sizes such as: kib, ki, mib, mi, gib or gi.
     memory = "2.0gib"
-    upgrade_vhardware = true
+    upgrade_vhardware = false
     gui = false
     tools_init_timeout = "30s"
 
@@ -43,15 +43,15 @@ resource "vix_vm" "node" {
     description = "Terraform VMWare Vix k8s ${format("${var.labname}-node-%02d", count.index+1)}"
 
     image {
-		url = "file:///Users/fred/Downloads/CentOS-7-x86_64-Vagrant-1711_01.VMwareFusion.box"
-		checksum = "1c92b17c927b39ee3c02acac142ec0bec1c81a372d187bd058f2ecd5a55530ae"
+		url = "file:///Users/fred/git/packer-centos-7/builds/vmware-centos7.box"
+		checksum = "c53b821d00db0b06637a538b87367f6d95f1f22879ec32f271888da8489030f4"
         checksum_type = "sha256"
     }
 
     cpus = 2
     # Memory sizes must be provided using IEC sizes such as: kib, ki, mib, mi, gib or gi.
     memory = "2.0gib"
-    upgrade_vhardware = true
+    upgrade_vhardware = false
     gui = false
     tools_init_timeout = "30s"
 

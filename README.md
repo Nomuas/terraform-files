@@ -14,7 +14,8 @@ En terme de fonctionnalité, le provider libvirt est clairement un cran au dessu
 #### A savoir
 Le provider _libvirt_ stocke ses images au format _qcow2_.Il est possible de les héberger au format _raw_ dans un pool en LVM à condition de modifier le code en Go du provider et des dépendances (tips : search and sometimes replace;)).
 
-Pour générer sur un serveur linux (pas sur mac os) un hash en SHA-512 : `# python -c 'import crypt,getpass; print(crypt.cryp(getpass.getpass(), crypt.mksal(crypt.METHOD_SHA512)))'`
+Pour générer sur un serveur linux (pas sur mac os) un hash en SHA-512 :  
+`# python -c 'import crypt,getpass; print(crypt.cryp(getpass.getpass(), crypt.mksal(crypt.METHOD_SHA512)))'`
 
 #### TODO
  * Tests sur le provider _vmware-vix_ en cours

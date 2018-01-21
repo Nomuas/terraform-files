@@ -27,9 +27,11 @@ VMNET_NETWORK="10.30.0.0"
 VMNET_NETMASK="255.255.255.0"
 # Prefix to use for the VM
 LABNAME="k8s-kubespray"
-# Golden image checksum is need to find files
-IMAGE_URL="file:///Users/fred/Downloads/CentOS-7-x86_64-Vagrant-1711_01.VMwareFusion.box"
-IMAGE_CHECKSUM="1c92b17c927b39ee3c02acac142ec0bec1c81a372d187bd058f2ecd5a55530ae"
+# Golden image checksum is need to find files (shasum -a256 <file.box>)
+IMAGE_URL="file:///Users/fred/git/packer-centos-7/builds/vmware-centos7.box"
+IMAGE_CHECKSUM="c53b821d00db0b06637a538b87367f6d95f1f22879ec32f271888da8489030f4"
+# IMAGE_URL="file:///Users/fred/Downloads/CentOS-7-x86_64-Vagrant-1711_01.VMwareFusion.box"
+# IMAGE_CHECKSUM="1c92b17c927b39ee3c02acac142ec0bec1c81a372d187bd058f2ecd5a55530ae"
 IMAGES_DIRECTORY="~/.terraform/vix/vms/${IMAGE_CHECKSUM}"
 # VMWare binaries
 VMNET_CFGCLI="sudo vmnet-cfgcli"
@@ -99,6 +101,7 @@ case $1 in
         $0 stop
         for VM in `eval ls ${IMAGES_DIRECTORY}/${LABNAME}*/*.vmx`; do
             ${VMRUN} setNetworkAdapter ${VM} 0 custom vmnet${VMNET_NUMBER}
+            # ${VMRUN} -gu root -gp changeme runProgramInGuest ${VM} /bin/nmcli con mod eth0 ip4 gw4 ipv4.dns 
         done
         $0 start   
         ;;
