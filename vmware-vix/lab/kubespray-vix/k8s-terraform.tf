@@ -7,8 +7,8 @@ provider "vix" {
 # Lab name
 variable "labname" { default = "k8s-kubespray" }
 # Number of master & node to create
-variable "master_count" { default = 1 }
-variable "node_count" { default = 1 }
+variable "master_count" { default = 3 }
+variable "node_count" { default = 3 }
 
 resource "vix_vm" "master" {
     name = "${format("${var.labname}-master-%02d", count.index+1)}"
@@ -24,7 +24,7 @@ resource "vix_vm" "master" {
     # Memory sizes must be provided using IEC sizes such as: kib, ki, mib, mi, gib or gi.
     memory = "2.0gib"
     upgrade_vhardware = false
-    gui = false
+	gui = "false"
     tools_init_timeout = "30s"
 
     network_adapter {
@@ -52,7 +52,7 @@ resource "vix_vm" "node" {
     # Memory sizes must be provided using IEC sizes such as: kib, ki, mib, mi, gib or gi.
     memory = "2.0gib"
     upgrade_vhardware = false
-    gui = false
+	gui = "false"
     tools_init_timeout = "30s"
 
     network_adapter {

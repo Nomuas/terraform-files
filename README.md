@@ -18,5 +18,4 @@ Pour générer sur un serveur linux (pas sur mac os) un hash en SHA-512 :
 `# python -c 'import crypt,getpass; print(crypt.cryp(getpass.getpass(), crypt.mksal(crypt.METHOD_SHA512)))'`
 
 #### TODO
- * Tests sur le provider _vmware-vix_ en cours
  * Mettre en place un script de cluster, à l'image des exemples vmware-vix, pour ceux du provider libvirt plutôt qu'un simple clean.
